@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View, Image } from 'react-native';
+import { TouchableOpacity, View, Image, StyleSheet } from 'react-native';
 import { Row } from '@components/common';
 import { ElemDateText, ElemNameText, NormalText } from './styled';
 import { TChatListElemProps } from './types';
@@ -33,6 +33,8 @@ export const ChatListElem = ({ chat }: TChatListElemProps) => {
               height: 50,
               borderRadius: 25,
               marginRight: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           />
         ) : (
@@ -40,7 +42,6 @@ export const ChatListElem = ({ chat }: TChatListElemProps) => {
             style={{
               width: 50,
               height: 50,
-              borderRadius: 25,
               marginRight: 10,
               justifyContent: 'center',
               alignItems: 'center',

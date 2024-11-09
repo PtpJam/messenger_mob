@@ -1,0 +1,35 @@
+{
+  "cli": {
+    "version": ">= 12.5.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_HOST": "http://192.168.0.108:3000",
+        "SOCKET": "http://192.168.0.108:3002"
+      }
+    },
+    "preview": {
+      "developmentClient": false,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_HOST": "http://192.168.0.108:3000",
+        "SOCKET": "http://192.168.0.108:3002"
+      },
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleDebug"
+      }
+      
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

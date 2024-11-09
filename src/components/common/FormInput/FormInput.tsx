@@ -45,8 +45,44 @@ export const FormInput = ({
     }
   }, [isFocused]);
 
-  return isFocused ? (
-    <StyledBackgroundImage source={Images.ActiveInputBg}>
+  // return isFocused ? (
+  //   <StyledBackgroundImage source={Images.ActiveInputBg}>
+  //     <Row>
+  //       <StyledFormInput
+  //         ref={inputRef}
+  //         placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+  //         value={value}
+  //         onChangeText={handleTextChange}
+  //         onFocus={handleIsFocused}
+  //         onBlur={handleOffFocused}
+  //         secureTextEntry={isSensitive}
+  //         keyboardType={keyboardType}
+  //         placeholder={placeholder}
+  //       />
+  //       <InputIcon
+  //         source={isFocused ? iconActive : iconInactive}
+  //         resizeMode="contain"
+  //       />
+  //     </Row>
+  //   </StyledBackgroundImage>
+  // ) : (
+  //   <StyledInactiveInput>
+  //     <Row>
+  //       <StyledFormInput
+  //         placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+  //         onFocus={handleIsFocused}
+  //         value={value}
+  //         secureTextEntry={isSensitive}
+  //         placeholder={placeholder}
+  //       />
+  //       <InputIcon source={iconInactive} resizeMode="contain" />
+  //     </Row>
+  //     <StyledBottomImage source={Images.InactiveInputBg} resizeMode="contain" />
+  //   </StyledInactiveInput>
+  // );
+
+  return (
+    <StyledBackgroundImage source={isFocused ? Images.ActiveInputBg : ""}>
       <Row>
         <StyledFormInput
           ref={inputRef}
@@ -65,19 +101,5 @@ export const FormInput = ({
         />
       </Row>
     </StyledBackgroundImage>
-  ) : (
-    <StyledInactiveInput>
-      <Row>
-        <StyledFormInput
-          placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
-          onFocus={handleIsFocused}
-          value={value}
-          secureTextEntry={isSensitive}
-          placeholder={placeholder}
-        />
-        <InputIcon source={iconInactive} resizeMode="contain" />
-      </Row>
-      <StyledBottomImage source={Images.InactiveInputBg} resizeMode="contain" />
-    </StyledInactiveInput>
-  );
+  )
 };

@@ -1,9 +1,10 @@
-import React from 'react';
-import { MessageContainer, MessageInfo, MessageText, Triangle } from './styled';
+import React, { useEffect } from 'react';
+import { ChatGPTButton, DaleeButton, MessageContainer, MessageDate, MessageInfo, MessageSentContainer, MessageSentStatus, MessageText, Triangle } from './styled';
 import { TMessageProps } from './types';
 import CheckmarkIcon from '@assets/icons/CheckMarkIcon/CheckMarkIcon'; // Импорт SVG компонента
 import { TouchableOpacity, Image, Text, Linking, View, StyleSheet } from 'react-native';
-import { FileUrl, SingleChatFile } from '@common/socket/interface/chat.interface';
+import { FileUrl, GeneratedMaps, SingleChatFile } from '@common/socket/interface/chat.interface';
+import { Button } from 'react-native';
 
 // Функция для открытия файла по URL
 const openFile = (fileUrl: string) => {
@@ -12,9 +13,16 @@ const openFile = (fileUrl: string) => {
   });
 };
 
+
+
 // Основной компонент Message
-export const Message = ({ type, message }: TMessageProps) => {
+export const Message = ({ type, message, setIsChatGptPopupVisible, setChatGptRequestText, setIsDaleePopupVisible, setDaleeRequestText, selectedFile, setSelectedFile  }: TMessageProps) => {
   const isSentByUser = type === 'my';
+
+  useEffect(() => {
+  }, [])
+  
+  
 
   // Определение типа файла по расширению
   const getFileType = (fileUrl: string): string => {
@@ -34,6 +42,16 @@ export const Message = ({ type, message }: TMessageProps) => {
         return 'unknown';
     }
   };
+
+  const handleOpenGpt = () => {
+    setChatGptRequestText(message.message)
+    setIsChatGptPopupVisible(true)
+  }
+
+  const handleOpenDalee = () => {
+    setDaleeRequestText(message.message)
+    setIsDaleePopupVisible(true)
+  }
 
   // Рендер файла
   const renderFile = (files_urls: FileUrl[]) => {
@@ -91,20 +109,42 @@ export const Message = ({ type, message }: TMessageProps) => {
       
 
       {/* Если есть файл, рендерим его */}
-      {message.files_urls && renderFile(message.files_urls)}
+      {message.files_urls?.length > 0 && renderFile(message.files_urls)}
 
       <MessageText>{message.message}</MessageText>
 
-      <MessageInfo $type={type}>
-        {/* Время сообщения */}
-        {new Date(message.date).toLocaleTimeString([], {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false,
-        })}
-        {/* Рендер галочки для отправленных сообщений */}
-        {isSentByUser && <CheckmarkIcon width={20} height={15} />}
+      <MessageInfo>
+        <View style={{
+          flexDirection: 'row',
+          columnGap: 10
+        }}>
+          <ChatGPTButton onPress={handleOpenGpt}>
+            <Text>ChatGpt</Text>
+          </ChatGPTButton>
+
+          <DaleeButton onPress={handleOpenDalee}>
+            <Text>Dalee</Text>
+          </DaleeButton>
+        </View>
+        
+
+        <MessageSentContainer>
+          {/* Рендер галочки для отправленных сообщений */}
+          <MessageSentStatus >
+            {isSentByUser && <CheckmarkIcon width={20} height={15} />}
+          </MessageSentStatus>
+          {/* Время сообщения */}
+          <MessageDate $type={type}>
+            {new Date(message.date).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false,
+            })}
+          </MessageDate>
+        </MessageSentContainer>
+
       </MessageInfo>
+
 
       {/* Треугольник под сообщением */}
       <Triangle $type={type} />

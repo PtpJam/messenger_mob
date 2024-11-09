@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import Navigator from './src/navigation/Navigator';
 import store from './src/store/store';
 import socket from '@common/socket/connection';
+import { registerRootComponent } from 'expo';
 
 function App(): JSX.Element {
   useEffect(() => {

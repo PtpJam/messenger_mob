@@ -18,6 +18,7 @@ import { Platform } from 'react-native';
 // import RNFS from 'react-native-fs';
 import { PermissionsAndroid } from 'react-native';
 import { TChatGptMessage } from '@common/types/chatGPT';
+import Constants from 'expo-constants';
 
 export const ChatGpt = ({ route, navigation }: TChatGptProps) => {
   const { user } = useUserData();
@@ -99,9 +100,11 @@ export const ChatGpt = ({ route, navigation }: TChatGptProps) => {
   };
 
   return (
-    <MainContainer>
+    <MainContainer style={{
+      marginTop: Constants.statusBarHeight
+    }}>
       <Header
-        title={chatInfo?.name || 'Чат'}
+        title={'ChatGPT'}
         avatar_url={chatInfo?.users?.[0]?.profile_url}
         setMessages={setMessages}
       />

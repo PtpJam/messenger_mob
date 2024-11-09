@@ -3,6 +3,7 @@ import { apiFormData, apiPrivate } from '../../api';
 import { TGetMessages } from './types/getMessages';
 import { TGetRoomInfo } from './types/getRoomInfo';
 import { TPostSendMessageRequest, TPayload } from './types/postSendMessage';
+import { TPostSendMessageInlineRequest } from './types/postSendMessageInline';
 
 export class ChatGptService {
   // static async postCreateRoom(
@@ -40,12 +41,20 @@ export class ChatGptService {
   static async sendMessage(
     data: TPostSendMessageRequest['payload']
   ): Promise<TPostSendMessageRequest['response']> {
-    
-    
-    console.log(`data in axios ${data}`)
-    console.log(data)
     // Отправляем запрос через axios
     return apiPrivate.post('/chat-gpt/message', data, {
+      headers: {
+        "Authorization": `Bearer ${EncryptedStorageService.getTokenSync()}`
+      },
+      timeout: 20000,
+    });
+  }
+
+  static async sendMessageInline(
+    data: TPostSendMessageInlineRequest['payload']
+  ): Promise<TPostSendMessageInlineRequest['response']> {
+    // Отправляем запрос через axios
+    return apiPrivate.post('/chat-gpt/message-inline', data, {
       headers: {
         "Authorization": `Bearer ${EncryptedStorageService.getTokenSync()}`
       },

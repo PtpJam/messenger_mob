@@ -30,7 +30,7 @@ export const StyledBackgroundImage = styled(ImageBackground)`
 export const StyledInactiveInput = styled(View)`
   width: 100%;
   padding: 0 40px;
-  height: 55px;
+  height: 58px;
 `;
 
 export const StyledBottomImage = styled(Image)`

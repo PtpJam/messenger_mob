@@ -13,14 +13,9 @@ export const Header = ({ avatar_url, title, setMessages }: THeaderProps) => {
   };
   return (
     <MainView>
-      {avatar_url ? (
-        <StyledImage source={{ uri: avatar_url }} resizeMode="contain" />
-      ) : (
-        <ActivityIndicator size="small" color={'#fff'} />
-      )}
       <Title>{title}</Title>
       <SendButton onPress={handleDeleteHistory}>
-        <Text style={{flex: 1, textAlign: 'center', verticalAlign: 'middle', fontSize: 10}}>Видалити історію</Text>
+        <Text style={{flex: 1, textAlign: 'center', verticalAlign: 'middle', fontSize: 10}}>Удалить историю</Text>
       </SendButton>
         
     

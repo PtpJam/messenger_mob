@@ -12,6 +12,7 @@ import {
   RefreshControl,
   ScrollView,
   View,
+  Image,
 } from 'react-native';
 import { useUserData } from '../../../store/tools';
 import { ChatsList as ChatsListComponent } from './components/ChatsList';
@@ -24,6 +25,8 @@ import PencilIcon from '@assets/icons/Pencil/PencilIcon';
 import useSocketEvents from '@common/hooks/useSocketEvents/useSocketEvents';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { ChatGptElem } from './components/ChatGptElem';
+import Constants from 'expo-constants';
+import PhoneCall from '@assets/icons/phone-call-icon.svg'; // Импорт SVG компонента
 
 export const ChatsList = () => {
   useSocketEvents(); // Use the custom hook to listen to socket events
@@ -67,11 +70,17 @@ export const ChatsList = () => {
   };
 
   const handleCreateChat = () => {
-    navigation.navigate('ChatsStack', { screen: 'CreateChat' });
+    navigation.navigate('ChatsStack', { screen: 'SelectUsersForChat' });
+  };
+
+  const handleMoveToCalls = () => {
+    navigation.navigate('ChatsStack', { screen: 'CallScreen' });
   };
 
   return (
-    <MainBackgroundImage>
+    <MainBackgroundImage style={{
+      marginTop: Constants.statusBarHeight
+    }}>
       <Row
         style={{
           alignItems: 'center',
@@ -98,6 +107,7 @@ export const ChatsList = () => {
           Сообщения
         </Text>
         <View style={{ width: 35 }} />
+        <PhoneCall width={24} height={24} onPress={handleMoveToCalls}></PhoneCall>
       </Row>
           
       {isLoading ? (

@@ -1,18 +1,18 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { HOST } from '@env';
+import { EXPO_PUBLIC_HOST } from '@env';
 import { EncryptedStorageService } from '@common/storage/encryptedStorage';
 
 // Проверка корректности переменной окружения HOST
-if (!HOST) {
+if (!EXPO_PUBLIC_HOST) {
   console.error(
     'HOST is not defined! Please check your environment variables.'
   );
 }
 
-console.log('HOST => ', HOST);
+console.log('HOST => ', EXPO_PUBLIC_HOST);
 
 const privateInstance = axios.create({
-  baseURL: HOST,
+  baseURL: EXPO_PUBLIC_HOST,
   withCredentials: true, // Для авторизованных запросов
   headers: {
     'Access-Control-Allow-Origin': '*', // Временно разрешить все источники
@@ -20,7 +20,7 @@ const privateInstance = axios.create({
 });
 
 const formDataInstance = axios.create({
-  baseURL: HOST,
+  baseURL: EXPO_PUBLIC_HOST,
   withCredentials: false, // Для запросов с формами, например загрузка файлов
   // Позволяем Axios автоматически устанавливать заголовки для FormData
   headers: {

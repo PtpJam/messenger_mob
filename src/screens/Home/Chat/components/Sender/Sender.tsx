@@ -12,26 +12,26 @@ import { launchImageLibrary } from 'react-native-image-picker'; // Для заг
 import * as DocumentPicker from 'expo-document-picker';
 import { Images } from '@assets/Images.ts';
 
-export const Sender = ({ onSend }: TSenderProps) => {
-  const [text, setText] = useState<string>('');
-  const [selectedFile, setSelectedFile] = useState<any | null>(null);
+export const Sender = ({ onSend, messageText, setMessageText, selectedFile, setSelectedFile }: TSenderProps) => {
+  // const [text, setText] = useState<string>('');
 
   const handleTextChange = (newText: string) => {
-    setText(newText);
+    setMessageText(newText);
   };
 
   const handleSend = () => {
     // Проверяем, что есть текст или файл
     console.log('---------------------------')
     console.log(selectedFile)
-    onSend({ message: text || ' ', file: selectedFile });
-    setText('');
+    onSend({ message: messageText || ' ', file: selectedFile });
+    setMessageText('');
     setSelectedFile(null); // Очищаем файл после отправки
     Keyboard.dismiss();
   };
 
   const handleFilePicker = async () => {
     try {
+      console.log("123")
       const result = await DocumentPicker.getDocumentAsync({
         type: '*/*',
         multiple: true
@@ -51,7 +51,7 @@ export const Sender = ({ onSend }: TSenderProps) => {
     <MainView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <SenderContainer>
         <StyledInput
-          value={text}
+          value={messageText}
           keyboardAppearance="dark"
           onChangeText={handleTextChange}
           placeholder="Введите сообщение"

@@ -32,7 +32,6 @@ import { default as ActiveInputBg } from './images/active-input-bg.png';
 import { default as InactiveInputBg } from './images/inactive-input-bg.png';
 
 
-
 export const Images = {
   ScreenBackground,
   ButtonBell,

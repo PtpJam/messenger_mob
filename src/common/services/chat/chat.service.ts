@@ -34,7 +34,7 @@ export class ChatService {
     data: FormData
   ): Promise<TPostSendMessageRequest['response']> {
     console.log('Parsed FormData:');
-    
+    console.log(data)
     // Логируем данные через доступ к _parts (React Native-specific)
     if (data._parts) {
       data._parts.forEach(([key, value]) => {

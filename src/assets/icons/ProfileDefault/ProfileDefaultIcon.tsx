@@ -1,19 +1,34 @@
 import React from 'react';
-import Svg, { Path } from 'react-native-svg';
+import { StyleSheet } from 'react-native';
+import Svg, { Circle, Path } from 'react-native-svg';
 
 const ProfileDefaultIcon = ({ width = 50, height = 50, style = {} }) => {
+
+  const styles = StyleSheet.create({
+    styleBase: {
+      viewBox: `0 0 ${width} ${height}`,
+    },
+  });
+
   return (
-    <Svg viewBox="0 0 100 100" width={width} height={height} style={style}>
+    <Svg width={width} height={height} style={[styles.styleBase, style]}>
       {/* Контур головы */}
-      <Path
-        d="M50 10C28.667 10 11 27.667 11 49C11 70.333 28.667 88 50 88C71.333 88 89 70.333 89 49C89 27.667 71.333 10 50 10Z"
+      <Circle
+        r={width/2}
+        fill="#6bbfff"
+        cx={width/2} 
+        cy={height/2}
+      />
+      {/* <Path
+        d="M0,0 L50,0 L50,50 L0,50 L0,0"
         fill="#6bbfff"
         stroke="#6bbfff"
-        strokeWidth="2"
-      />
+        strokeWidth="0"
+      /> */}
 
     </Svg>
   );
 };
+
 
 export default ProfileDefaultIcon;

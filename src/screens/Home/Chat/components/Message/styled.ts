@@ -1,10 +1,11 @@
+import { Button, Pressable } from 'react-native';
 import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 
 export const MessageContainer = styled(View)<{ $type: 'my' | 'other' }>`
   align-self: ${(props) => (props.$type === 'my' ? 'flex-end' : 'flex-start')};
   max-width: 70%;
-  min-width: 20%; /* Устанавливаем минимальную ширину контейнера */
+  min-width: 30%; /* Устанавливаем минимальную ширину контейнера */
   padding: 10px 15px; /* Снижаем отступы для аккуратного вида */
   margin: 5px 0;
   border-radius: 12px; /* Уменьшаем радиус для более аккуратного вида */
@@ -42,13 +43,13 @@ export const Triangle = styled(View)<{ $type: 'my' | 'other' }>`
 `;
 
 // Время сообщения
-export const MessageInfo = styled(Text)<{ $type: 'my' | 'other' }>`
+export const MessageInfo = styled(View)`
   font-size: 12px; /* Размер шрифта */
-  position: absolute; /* Абсолютное позиционирование */
-  bottom: 5px; /* Отступ снизу */
-  right: 10px; /* Отступ справа */
-  color: ${(props) =>
-    props.$type === 'my' ? '#7da8d3' : '#6b7d8c'}; /* Цвет времени */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  float: right;
+  justify-content: space-between;
 `;
 
 // Текст сообщения
@@ -56,4 +57,39 @@ export const MessageText = styled(Text)`
   font-size: 16px;
   color: #e1e1e1; /* Светлый цвет текста */
   margin-bottom: 5px; /* Уменьшение отступов, чтобы текст не уходил далеко от времени */
+`;
+
+export const MessageDate = styled(Text)<{ $type: 'my' | 'other' }>`
+  padding-left: 10px;
+  color: ${(props) =>
+    props.$type === 'my' ? '#7da8d3' : '#6b7d8c'}; /* Цвет времени */
+`;
+
+export const ChatGPTButton = styled(Pressable)`
+  align-items: center;
+  justify-content: left;
+  float: left;
+  padding: 0px 8px;
+  elevation: 3;
+  background-color: #28a08c;
+  border-radius: 6px
+`
+
+export const DaleeButton = styled(Pressable)`
+  align-items: center;
+  justify-content: left;
+  float: left;
+  padding: 0px 8px;
+  elevation: 3;
+  background-color: #54c3ff;
+  border-radius: 6px
+`
+
+export const MessageSentStatus = styled(View)`
+  padding-top: 1px;
+`;
+
+export const MessageSentContainer = styled(View)`
+  display: flexbox;
+  flex-direction: row-reverse;
 `;

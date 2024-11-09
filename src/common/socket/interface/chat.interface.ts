@@ -47,7 +47,11 @@ export interface MessageFromDB extends DatabaseResponse {
   message: string;
   date: string;
   from: User;
-  files_urls?: FileUrl[];
+  files_urls?: FileUrl[] | GeneratedMaps;
+}
+
+export interface GeneratedMaps {
+  generatedMaps: FileUrl[]
 }
 
 export interface FileUrl extends DatabaseResponse {
@@ -81,6 +85,7 @@ export interface Room extends DatabaseResponse {
   name: string;
   owner?: User;
   users?: User[];
+  messages?: MessageFromDB[]
 }
 export interface JoinRoomPayload {
   roomUid: string;

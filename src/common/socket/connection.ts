@@ -3,9 +3,10 @@ import {
   ClientToServerEvents,
   ServerToClientEvents,
 } from './interface/chat.interface';
+import { SOCKET, EXPO_PUBLIC_HOST } from '@env';
 
 const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
-  'http://10.0.2.2:3002/chat',
+  `${SOCKET}/chat`,
   {
     transports: ['websocket', 'polling'],
     reconnection: true,

@@ -5,7 +5,7 @@ export const MainView = styled(View)`
   width: 100%;
   flex-direction: row; /* Используем flex-row для горизонтального расположения элементов */
   align-items: center; /* Центрируем элементы по вертикали */
-  padding: 10px 20px; /* Отступы */
+  padding: 10px 0px 10px 10px; /* Отступы */
   background-color: #17212b; /* Тёмный фон */
   border-bottom-width: 1px; /* Нижняя граница */
   border-bottom-color: #1c1f22; /* Цвет границы */
