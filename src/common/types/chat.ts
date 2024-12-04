@@ -3,18 +3,18 @@ import { TAbstract } from './abstract';
 import { TMessage } from './message';
 
 export enum EChatTypes {
-    PRIVATE = 'private',
-    GROUP = 'group',
+  PRIVATE = 'private',
+  GROUP = 'group',
 }
 
 export type TChat = {
-    title: string;
+  title: string;
 
-    type: EChatTypes;
+  type: EChatTypes;
 
-    photo_url: string;
+  photo_url: string;
 
-    members: TUser[];
+  members: TUser[];
 
-    last_message?: TMessage | null;
+  last_message?: TMessage | null;
 } & TAbstract;

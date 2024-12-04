@@ -1,3 +1,3 @@
 export type TFooterProps = {
-    children?: React.ReactNode;
+  children?: React.ReactNode;
 };

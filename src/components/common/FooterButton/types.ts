@@ -1,4 +1,4 @@
 export type TFooterButtonProps = {
-    text: string;
-    onClick: () => void;
+  text: string;
+  onClick: () => void;
 };

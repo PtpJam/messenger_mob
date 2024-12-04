@@ -9,15 +9,15 @@ module.exports = {
       },
     ],
     [
-      "module-resolver",
+      'module-resolver',
       {
-        root: ["."],
+        root: ['.'],
         alias: {
-          "@store": "./src/store",
-          "@components": "./src/components",
-          "@common": "./src/common",
-          "@assets": "./src/assets",
-          "@navigation": "./src/navigation",
+          '@store': './src/store',
+          '@components': './src/components',
+          '@common': './src/common',
+          '@assets': './src/assets',
+          '@navigation': './src/navigation',
         },
       },
     ],

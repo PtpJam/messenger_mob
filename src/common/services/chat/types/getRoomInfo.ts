@@ -4,5 +4,5 @@ import { TRequest } from '../../types';
 export type TGetRoomInfo = TRequest<TPayload, Room>;
 
 type TPayload = {
-    roomUid: string;
+  roomUid: string;
 };

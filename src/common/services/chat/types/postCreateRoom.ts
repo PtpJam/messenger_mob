@@ -1,8 +1,9 @@
 import { TRequest } from '../../types';
 
-export type TPostCreateRoom = TRequest<TPayload, any>;
+export type TPostCreateRoomResponse = any; // Adjust this to the actual expected response structure if available
 
-type TPayload = {
-    name: string;
-    users: Array<string>
-};
+// If you're still using TRequest for other endpoints, keep it as is
+export type TPostCreateRoom = TRequest<
+  FormData,
+  TPostCreateRoomResponse
+>;

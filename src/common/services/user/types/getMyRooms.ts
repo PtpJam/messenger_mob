@@ -3,4 +3,4 @@ import { TBasicDataResponse, TRequest } from '../../types';
 
 export type TGetMyRoomsRequest = TRequest<null, TResponse>;
 
-type TResponse = any
+type TResponse = any;

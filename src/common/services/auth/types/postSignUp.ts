@@ -5,16 +5,16 @@ import { TUser } from './common';
 export type TPostUserSignUpRequest = TRequest<TPayload, TResponse>;
 
 type TPayload = {
-    nickname: string;
-    phone: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    avatar: Asset | null;
+  nickname: string;
+  phone: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  avatar: Asset | null;
 };
 
 type TResponse = {
-    success: boolean,
-    message: string,
-    user: TUser
+  success: boolean;
+  message: string;
+  user: TUser;
 };

@@ -5,14 +5,11 @@ import { TScreens } from '@navigation/types';
 type ExtendedNavigationProp = StackNavigationProp<TScreens>;
 
 export const useNavigation = (): ExtendedNavigationProp => {
-    const navigation = useOriginalNavigation<ExtendedNavigationProp>();
+  const navigation = useOriginalNavigation<ExtendedNavigationProp>();
 
-    const push = (
-        screen: keyof TScreens,
-        params?: TScreens[keyof TScreens],
-    ) => {
-        navigation.push(screen, params);
-    };
+  const push = (screen: keyof TScreens, params?: TScreens[keyof TScreens]) => {
+    navigation.push(screen, params);
+  };
 
-    return { ...navigation, push };
+  return { ...navigation, push };
 };

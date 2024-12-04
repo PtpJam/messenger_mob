@@ -8,11 +8,11 @@ import HomeStack from '../../stacks/Chats/Chats';
 const Tab = createBottomTabNavigator<TMainTab>();
 
 const MainTab = () => {
-    return (
-        <Tab.Navigator screenOptions={ScreenTabOptions}>
-            <Tab.Screen component={HomeStack} name={EStacks.Chats} />
-        </Tab.Navigator>
-    );
+  return (
+    <Tab.Navigator screenOptions={ScreenTabOptions}>
+      <Tab.Screen component={HomeStack} name={EStacks.Chats} />
+    </Tab.Navigator>
+  );
 };
 
 export default MainTab;

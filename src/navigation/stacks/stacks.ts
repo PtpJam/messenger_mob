@@ -1,3 +1,3 @@
 export enum EStacks {
-    Chats = 'ChatsStack',
+  Chats = 'ChatsStack',
 }
